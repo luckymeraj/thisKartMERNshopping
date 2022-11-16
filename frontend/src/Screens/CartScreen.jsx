@@ -16,7 +16,7 @@ const CartScreen = () => {
             <div className="cartscreen_right">
                 <div className="cartscreen_info">
                     <p>Subtotal (0) items</p>
-                    <p>RS 499.99</p>
+                    <p>₹ 499.99</p>
                 </div>
                 <div>
                     <button>Proceed To Checkout</button>

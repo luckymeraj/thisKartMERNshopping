@@ -10,7 +10,7 @@ const ProductScreen = () => {
         </div>
         <div className="left_info">
           <p className="left_name">Product 1</p>
-          <p>Price: Rs 499.99</p>
+          <p> ₹ 499.99</p>
           <p>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, quasi obcaecati molestias rem voluptatibus vel.</p>
         </div>
 
@@ -19,7 +19,7 @@ const ProductScreen = () => {
       <div className="productscreen_right">
         <div className="right_info">
           <p>
-            Price: <span>Rs499.99</span>
+            Price: <span>₹ 499.99</span>
           </p>
           <p>
             Status: <span>In Stock</span>
