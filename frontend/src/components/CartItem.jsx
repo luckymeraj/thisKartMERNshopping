@@ -10,7 +10,7 @@ const CartItem = () => {
         <Link to={`/product/${1111}`} className='cartitem_name'>
             <p>Product 1</p>
         </Link>
-        <p className="cartitem_price">Rs 499.99</p>
+        <p className="cartitem_price">₹ 499.99</p>
         <select className='cartitem_select'>
             <option value='1'>1</option>
             <option value='2'>2</option>

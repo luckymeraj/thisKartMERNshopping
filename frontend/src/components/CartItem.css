@@ -3,7 +3,7 @@
     padding: 1rem;
     margin-bottom: 8px;
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 4fr 2fr 1fr 1fr;
     gap: 8px;
     background: white;
     border-radius: 5px;
@@ -23,6 +23,10 @@
 }
 .cartitem_name:hover{
     color: pink;
+}
+
+.cartitem_price{
+font-weight:bold;
 }
 
 .cartitem select{
@@ -66,9 +70,9 @@
 
 @media (max-width:500px) {
 
-    .cartitem_name{
+    /* .cartitem_name{
         font-size: .6rem;
-    }
+    } */
 
     .cartitem_select,
     .cartitem_deleteBtn{
@@ -76,10 +80,10 @@
 
     }
 
-    .cartitem_price{
+    /* .cartitem_price{
         font-size: .6rem;
     }
-        
+         */
 }
 
 
