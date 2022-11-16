@@ -67,7 +67,7 @@
 
 
 }
-.sidedrawer_links > li> a :hover.sidedrawer_cartbadge{
+.sidedrawer_links > li> a:hover.sidedrawer_cartbadge{
     background: white;
     color: black;
 

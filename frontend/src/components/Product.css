@@ -41,7 +41,7 @@
     font-size: 1rem;
 
 }
-.info_button>a :hover{
+.info_button:hover{
     background:#171717 ;
     color: #f4f4f4;
 
