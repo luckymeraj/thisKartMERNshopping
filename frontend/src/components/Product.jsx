@@ -8,7 +8,7 @@ const Product = () => {
     <div className="product_info">
         <p className="info_name"> Product 1</p>
         <p className="info_discription">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis omnis laboriosam dolores molestias, provident quae quos laborum iusto commodi pariatur, fugit eveniet eius enim libero architecto id. Quod, debitis sequi! 
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam eum quia perspiciatis facilis hic voluptates?
         </p>
         <p className='info_price'>₹ 499</p>
         <Link to={`/product/${1111}`} className='info_button'>View</Link>
