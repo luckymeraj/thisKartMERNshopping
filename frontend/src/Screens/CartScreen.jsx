@@ -49,7 +49,7 @@ const CartScreen = () => {
                     {/* <Link to='/' >Continue Shopping</Link> */}
                 </div>
               ) : cartItems.map(item=>(
-                <CartItem item={item} qtyChangeHandler={qtyChangeHandler}
+                <CartItem key={item.product} item={item} qtyChangeHandler={qtyChangeHandler}
                 removeFromCart={removeHandler}
                 />
               ))}
