@@ -1,22 +1,59 @@
 import './CartScreen.css';
+import {useDispatch,useSelector} from 'react-redux';
+import { Link } from 'react-router-dom';
+
+// component
 import CartItem from '../components/CartItem';
+
+
+// Actions
+import {addToCart, removeFromCart} from '../redux/actions/cartActions';
+
 const CartScreen = () => {
+
+    const dispatch= useDispatch();
+
+    const cart= useSelector((state)=>state.cart);
+    const {cartItems}=cart;
+
+    const qtyChangeHandler=(id,qty)=>{
+        dispatch(addToCart(id,qty))
+    }
+
+
+    const removeHandler=(id)=>{
+        dispatch(removeFromCart(id));
+    }
+
+    const getCartCount=()=>{
+        return cartItems.reduce((qty, item)=>Number(item.qty)+qty,0)
+    };
+
+    const getCartSubTotal=()=>{
+        return cartItems.reduce((price,item)=>(item.price*item.qty) + price, 0)
+    }
+
+
+
     return (
         <div className='cartscreen'>
             <div className="cartscreen_left">
                 <h2>Shopping Cart</h2>
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <CartItem />
+              {cartItems.length===0 ? (
+                <div>
+                    Your Cart is Empty <Link to='/' >Continue Shopping</Link>
+                </div>
+              ) : cartItems.map(item=>(
+                <CartItem item={item} qtyChangeHandler={qtyChangeHandler}
+                removeFromCart={removeHandler}
+                />
+              ))}
 
             </div>
             <div className="cartscreen_right">
                 <div className="cartscreen_info">
-                    <p>Subtotal (0) items</p>
-                    <p>₹ 499.99</p>
+                    <p>Subtotal {getCartCount()} items</p>
+                    <p>₹ {getCartSubTotal().toFixed()}</p>
                 </div>
                 <div>
                     <button>Proceed To Checkout</button>
