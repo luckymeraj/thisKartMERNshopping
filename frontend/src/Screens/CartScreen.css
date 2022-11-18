@@ -38,14 +38,19 @@ padding: 1rem;
 }
 
 .cartscreen_right >div> button{
-    padding: 10px 17px;
+    padding: 10px 1px;
     width: 100%;
     background: black;
     color: white;
     border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 5px;
 }
+
+
+
+
 
 .cartscreen_right div button:hover{
 opacity: 0.8;
