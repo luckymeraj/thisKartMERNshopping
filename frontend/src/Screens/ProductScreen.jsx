@@ -1,34 +1,59 @@
-import './ProductScreen.css';
-import { useState,useEffect, } from 'react';
-import {useDispatch,useSelector} from 'react-redux';
+import "./ProductScreen.css";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 
-//Actions
-import {getProductDetails} from '../redux/actions/productActions';
-import {addToCart} from '../redux/actions/cartActions'; 
+// Actions
+import { getProductDetails } from "../redux/actions/productActions";
+import { addToCart } from "../redux/actions/cartActions";
 
 const ProductScreen = ({match,history}) => {
   const [qty, setQty]=useState(1);
   const dispatch =useDispatch();
   
-  const productDetails= useSelector(state=>state.getProductDetails);
+  const productDetails= useSelector((state)=>state.getProductDetails);
   
   const {loading, error, product}=productDetails;
-  useEffect(()=>{
-    if(product && match.params.id!==product._id){
-      dispatch(getProductDetails(match.params.id))
+  
+  const{id}=useParams();
+
+  
+  // useEffect(() => {
+  //   if (product && match.params.id !== product._id) {
+  //     dispatch(getProductDetails(match.params.id));
+  //   }
+  // }, [dispatch, match, product]);
+
+  
+  useEffect(() => {
+    if (product && id !== product._id) {
+      dispatch(getProductDetails(id));
     }
-  },[dispatch, product, match]);
+  }, [dispatch, match, product]);
+
+console.log(id);
+console.log(product);
+
+
+  const addToCartHandler = () => {
+    dispatch(addToCart(product._id, qty));
+    history.push(`/cart`);
+  };
+
   
   return (
     <div className='productscreen'>
-      <div className="productscreen_left">
+      {loading ? <h2>Loading...</h2> : error ? <h2>{error}</h2> : (
+        <>
+        
+        <div className="productscreen_left">
         <div className="left_image">
-          <img src="https://imgnew.outlookindia.com/uploadimage/library/16_9/16_9_5/IMAGE_1660025387.webp" alt='product img' />
+          <img src={product.imageUrl} alt={product.name} />
         </div>
         <div className="left_info">
-          <p className="left_name">Product 1</p>
-          <p> ₹ 499.99</p>
-          <p>Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, quasi obcaecati molestias rem voluptatibus vel.</p>
+          <p className="left_name">{product.name}</p>
+          <p> ₹ {product.price}</p>
+          <p><span style={{fontWeight:"bold"}}>Description:</span> {product.description}</p>
         </div>
 
       </div>
@@ -36,10 +61,10 @@ const ProductScreen = ({match,history}) => {
       <div className="productscreen_right">
         <div className="right_info">
           <p>
-            Price: <span>₹ 499.99</span>
+            Price: <span>₹ {product.price}</span>
           </p>
           <p>
-            Status: <span>In Stock</span>
+            Status: <span>{product.countInStock>0 ? "In Stock" : "Out Of Stock"}</span>
           </p>
           <p>
             Qty
@@ -55,9 +80,14 @@ const ProductScreen = ({match,history}) => {
           </p>
         </div>
       </div>
+        
+        </>
+
+      )}
+     
 
     </div>
   )
 }
 
-export default ProductScreen
+export default ProductScreen;
